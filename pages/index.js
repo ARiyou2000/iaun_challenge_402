@@ -2,6 +2,7 @@ import TopSeller from "@/components/TopSeller";
 import Reviews from "@/components/Reviews";
 import CarList from "@/components/CarList";
 import DashboardLayout from "@/layouts/DashboardLayout";
+import {useEffect, useState} from "react";
 
 const carListArray = [
   {
@@ -63,13 +64,22 @@ const carListArray = [
 ]
 
 export default function Home() {
+
+  const [recentCarsList, setRecentCarsList] = useState([]);
+  const [recommendedCarList, setRecommendedCarList] = useState([]);
+
+  useEffect(() => {
+    setRecentCarsList([...carListArray].sort((a, b) => 0.5 - Math.random()))
+    setRecommendedCarList([...carListArray].sort((a, b) => 0.5 - Math.random()))
+  }, []);
+
   return (
     <>
       <DashboardLayout>
         <TopSeller/>
         <Reviews/>
-        <CarList title={"Recent cars"} list={[...carListArray].sort((a, b) => 0.5 - Math.random())}/>
-        <CarList title={"Recommended cars"} list={[...carListArray].sort((a, b) => 0.5 - Math.random())}/>
+        <CarList title={"Recent cars"} list={recentCarsList}/>
+        <CarList title={"Recommended cars"} list={recommendedCarList}/>
       </DashboardLayout>
     </>
   )
