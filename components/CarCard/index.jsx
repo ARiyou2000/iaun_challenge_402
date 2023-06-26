@@ -27,8 +27,8 @@ const CarCard = ({
 
         <div style={{display: "flex", alignItems: "start", justifyContent: "space-between"}}>
           <div>
-            <h5 className="card-title">{title}</h5>
-            <span style={{display: "block", marginLeft: 0, fontWeight: "bold"}}>{type}</span>
+            <h5 className="text-2xl font-bold">{title}</h5>
+            <span className={"block font-semibold text-gray-600 ml-0"}>{type}</span>
           </div>
           <Like fill={favorite ? "red" : "none"} onClick={() => {
             setFavorite(!favorite)
